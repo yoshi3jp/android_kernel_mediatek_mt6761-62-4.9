@@ -7,9 +7,13 @@ jobs:
   build-kernel:
     runs-on: ubuntu-latest
 
-    # Use Ubuntu 18.04 container for compatibility
+    # Use Ubuntu 20.04 container for compatibility
     container:
-      image: ubuntu:18.04
+      image: ubuntu:20.04
+      
+    # Compatibility with Ubuntu 18.04 container
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
       - name: Checkout source
