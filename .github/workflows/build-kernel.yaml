@@ -39,6 +39,24 @@ jobs:
           echo "Adding ARM32 cross toolchain to PATH"
           echo "/opt/toolchain/bin" >> $GITHUB_PATH
 
+      - name: Derive MTK_PLATFORM from .config
+        id: mtk
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .config
+
+          # Handles either CONFIG_MTK_PLATFORM="mt6761" or CONFIG_MTK_PLATFORM=mt6761
+          MTK_PLATFORM="$(sed -n 's/^CONFIG_MTK_PLATFORM="\{0,1\}\([^"]*\)"\{0,1\}$/\1/p' .config | head -n1)"
+
+          if [ -z "$MTK_PLATFORM" ]; then
+            echo "CONFIG_MTK_PLATFORM not found in .config"
+            exit 1
+          fi
+
+          echo "MTK_PLATFORM=$MTK_PLATFORM"
+          echo "mtk_platform=$MTK_PLATFORM" >> "$GITHUB_OUTPUT"
+
       - name: Verify cross compiler is ARM32
         run: |
           arm-linux-androideabi-gcc -dumpmachine
@@ -49,7 +67,7 @@ jobs:
         run: |
           export ARCH=arm
           export CROSS_COMPILE=arm-linux-androideabi-
-          make -j"$(nproc)" zImage modules
+          make -j"$(nproc)" zImage modules MTK_PLATFORM="${{ steps.mtk.outputs.mtk_platform }}"
 
       - name: Collect built artifacts
         run: |
