@@ -1,0 +1,60 @@
+name: Build Linux 4.9 (ARM32) Kernel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    runs-on: ubuntu-latest
+
+    # Use Ubuntu 18.04 container for compatibility
+    container:
+      image: ubuntu:18.04
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          apt-get update
+          apt-get install -y \
+            bc bison flex build-essential \
+            git wget curl ca-certificates \
+            libssl-dev libncurses5-dev \
+            python
+
+      - name: Fetch prebuilt GCC 4.9 ARM32 cross toolchain
+        run: |
+          git clone --depth=1 \
+            https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 \
+            /opt/toolchain
+
+      - name: Set up toolchain environment
+        run: |
+          echo "Adding ARM32 cross toolchain to PATH"
+          echo "/opt/toolchain/bin" >> $GITHUB_PATH
+
+      - name: Verify cross compiler is ARM32
+        run: |
+          arm-linux-androideabi-gcc -dumpmachine
+          arm-linux-androideabi-gcc -dM -E - < /dev/null \
+            | egrep '__arm__|__aarch64__|__SIZEOF_POINTER__' || true
+
+      - name: Build kernel
+        run: |
+          export ARCH=arm
+          export CROSS_COMPILE=arm-linux-androideabi-
+          make -j"$(nproc)" zImage modules
+
+      - name: Collect built artifacts
+        run: |
+          mkdir -p artifacts
+          cp arch/arm/boot/zImage artifacts/ || true
+          cp -r modules artifacts/modules/ || true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-4.9-arm-build
+          path: artifacts
