@@ -43,6 +43,7 @@
 #include "sync_write.h"
 
 /* #include "mtk_thermal_typedefs.h" */
+#include "mtk_gpufreq.h"
 #include "mtk_thermal.h"
 #include "mt_freqhopping.h"
 #include "mt_fhreg.h"
