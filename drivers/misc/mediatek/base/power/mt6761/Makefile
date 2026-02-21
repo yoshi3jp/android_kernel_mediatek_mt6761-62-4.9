@@ -45,6 +45,7 @@ ccflags-$(CONFIG_MTK_GPU_SPM_DVFS_SUPPORT) += -DMTK_GPU_SPM
 obj-$(CONFIG_MACH_MT6761) += mtk_picachu.o
 
 ifneq ($(CONFIG_FPGA_EARLY_PORTING), y)
+$(info [DEBUG] power/mt6761 ccflags-y = $(ccflags-y))   # tmp. Debugging flags
 obj-$(CONFIG_MACH_MT6761) += mtk_gpufreq_core.o
 ifeq ($(CONFIG_MTK_TINYSYS_SSPM_SUPPORT), y)
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/sspm/
