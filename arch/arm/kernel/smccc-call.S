@@ -62,3 +62,4 @@ ENDPROC(__arm_smccc_smc)
 ENTRY(__arm_smccc_hvc)
 	SMCCC SMCCC_HVC
 ENDPROC(__arm_smccc_hvc)
+.section .note.GNU-stack,"",%progbits

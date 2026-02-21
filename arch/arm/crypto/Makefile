@@ -52,3 +52,8 @@ $(src)/sha512-core.S_shipped: $(src)/sha512-armv4.pl
 	$(call cmd,perl)
 
 .PRECIOUS: $(obj)/aesbs-core.S $(obj)/sha256-core.S $(obj)/sha512-core.S
+
+# Prevent __ARM_NEON__ in these glue units (they call kernel_neon_begin/end)
+CFLAGS_aes-ce-glue.o        += -mgeneral-regs-only
+CFLAGS_sha256_neon_glue.o   += -mgeneral-regs-only
+CFLAGS_sha2-ce-glue.o       += -mgeneral-regs-only
