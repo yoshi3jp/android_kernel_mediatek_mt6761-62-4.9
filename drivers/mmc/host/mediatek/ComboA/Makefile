@@ -27,6 +27,9 @@ else
 ccflags-y += -I$(srctree)/drivers/mmc/host/mediatek/ComboA/$(MTK_PLATFORM)
 endif
 
+#workaround for non-alps
+ccflags-y += -I$(srctree)/drivers/mmc/host/mediatek/ComboA
+
 ifeq ($(CONFIG_MTK_PLATFORM), "mt3967")
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/pmic/include/mt6358
 ccflags-y += -I$(srctree)/drivers/devfreq/
