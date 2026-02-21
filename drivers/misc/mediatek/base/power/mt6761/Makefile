@@ -33,6 +33,8 @@ ccflags-y += -Wno-unused-function
 
 ifeq ($(CONFIG_MACH_MT6761),y)
     ccflags-y += -I$(srctree)/drivers/misc/mediatek/cmdq/v3/mt6765/
+# $(MTK_PLATFORM) may not be set properly
+    ccflags-y += -I$(srctree)/drivers/misc/mediatek/power/mt6761/
 else
     ccflags-y += -I$(srctree)/drivers/misc/mediatek/cmdq/v3/$(MTK_PLATFORM)/
 endif
