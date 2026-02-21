@@ -23,7 +23,7 @@
 
 #include "mt-plat/sync_write.h"
 
-#include "mtk_gpufreq.h"
+#include <mtk_gpufreq.h>
 
 
 /*
