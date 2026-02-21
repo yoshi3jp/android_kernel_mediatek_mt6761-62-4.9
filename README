@@ -1,3 +1,13 @@
+NOTE:
+ * Missing camera driver: drivers/misc/mediatek/imgsensor/src/common/v1/ov08d10_mipi_raw
+ 	Configured in CUSTOM_KERNEL_IMGSENSOR
+ * Missing display driver: drivers/misc/mediatek/lcm/kc_ili9806e_fwvga_dsi_vdo
+ 	Configured in CUSTOM_KERNEL_LCM
+ * Do NOT attempt to enable MT6765 while building for MT6761 - it will not work.
+ * If GCC is too new, the tree will act up big time.
+ * This tree is experimental at best.
+ 
+---
         Linux kernel release 4.x <http://kernel.org/>
 
 These are the release notes for Linux version 4.  Read them carefully,
