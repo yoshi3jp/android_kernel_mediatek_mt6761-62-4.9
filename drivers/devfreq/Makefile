@@ -14,6 +14,9 @@ obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra-devfreq.o
 # DEVFREQ Event Drivers
 obj-$(CONFIG_PM_DEVFREQ_EVENT)		+= event/
 
+#Fix: This directory has its own headers too
+ccflags-y += -I$(srctree)/drivers/devfreq/
+
 ifneq ($(CONFIG_MEDIATEK_SOLUTION),)
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/base/power/include/
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/base/power/spm/$(MTK_PLATFORM)/
