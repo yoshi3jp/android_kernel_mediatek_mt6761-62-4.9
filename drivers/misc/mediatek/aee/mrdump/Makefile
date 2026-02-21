@@ -13,6 +13,9 @@
 
 subdir-ccflags-y += -Idrivers/misc/mediatek/mtprof/
 
+#workaround for non-alps
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/aee/mrdump/
+
 ccflags-$(CONFIG_MTK_AEE_IPANIC) += -DTEXT_OFFSET=$(TEXT_OFFSET)
 obj-$(CONFIG_MTK_AEE_IPANIC)	+= mrdump.o
 
