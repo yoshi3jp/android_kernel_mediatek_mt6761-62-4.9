@@ -27,7 +27,7 @@ subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/cmdq/v3/$(MTK_PLATFORM)
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/debug_latch/plat_dbg_info/
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/eccci/
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/eccci/hif/
-subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/emi/mt6761/$(MTK_PLATFORM)
+subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/emi/$(MTK_PLATFORM)
 
 obj-$(CONFIG_MTK_EMI) += emi/
 obj-$(CONFIG_MTK_EMI_MPU) += emi_mpu/
