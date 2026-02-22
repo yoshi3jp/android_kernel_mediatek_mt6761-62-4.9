@@ -15,6 +15,8 @@
 # Makefile for external display driver.
 #
 
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/ext_disp/mt6765
+
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/include/ \
              -I$(srctree)/drivers/misc/mediatek/ext_disp/  \
              -I$(srctree)/drivers/misc/mediatek/ext_disp/include/  \
