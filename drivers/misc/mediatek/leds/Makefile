@@ -11,6 +11,11 @@
 # GNU General Public License for more details.
 #
 
+# This software is contributed or developed by KYOCERA Corporation.
+# (C) 2019 KYOCERA Corporation
+# (C) 2022 KYOCERA Corporation
+#
+
 ccflags-y += -I$(src)
 
 ifeq (y, $(filter y, $(CONFIG_MACH_MT6765) $(CONFIG_MACH_MT6761)))
@@ -29,3 +34,9 @@ else
 obj-y += $(subst ",,$(CONFIG_MTK_PLATFORM))/
 endif
 
+
+# obj-y		+= kc_leds_drv.o
+# obj-y		+= kc_leds_gpio_drv.o
+obj-y		+= kyocera/leds-lp5569kc.o
+obj-y		+= kyocera/leds-lv5216kc.o
+obj-y		+= kyocera/kc_leds_api.o
