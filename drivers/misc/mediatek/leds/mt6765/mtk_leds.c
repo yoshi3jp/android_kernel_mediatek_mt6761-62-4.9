@@ -97,6 +97,10 @@ char *leds_name[MT65XX_LED_TYPE_TOTAL] = {
 	"keyboard-backlight",
 	"button-backlight",
 	"lcd-backlight",
+	/* Kyocera additions (order must match enum additions) */
+	"key-green",
+	"key-white",
+	"key-blue",
 };
 
 struct cust_mt65xx_led *pled_dtsi;
