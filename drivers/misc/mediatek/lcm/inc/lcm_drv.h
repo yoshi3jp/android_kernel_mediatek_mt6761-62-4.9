@@ -10,6 +10,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  */
+/*
+ * This software is contributed or developed by KYOCERA Corporation.
+ * (C) 2019 KYOCERA Corporation
+*/
 
 #ifndef __LCM_DRV_H__
 #define __LCM_DRV_H__
@@ -17,6 +21,7 @@
 #include <linux/device.h>
 #include <linux/platform_device.h>
 #include <linux/regulator/consumer.h>
+#include "kdisp_lcm_drv.h"
 
 #ifndef ARY_SIZE
 #define ARY_SIZE(x) (sizeof((x)) / sizeof((x[0])))
@@ -637,6 +642,20 @@ struct LCM_DSI_PARAMS {
 	unsigned int PHY_SEL1;
 	unsigned int PHY_SEL2;
 	unsigned int PHY_SEL3;
+
+	unsigned int dynamic_switch_mipi;
+	unsigned int vertical_sync_active_dyn;
+	unsigned int vertical_backporch_dyn;
+	unsigned int vertical_frontporch_dyn;
+	unsigned int vertical_active_line_dyn;
+
+	unsigned int horizontal_sync_active_dyn;
+	unsigned int horizontal_backporch_dyn;
+	unsigned int horizontal_frontporch_dyn;
+	unsigned int horizontal_active_pixel_dyn;
+
+	unsigned int PLL_CLOCK_dyn;	/* PLL_CLOCK = (int) PLL_CLOCK */
+	unsigned int data_rate_dyn;	/* data_rate = PLL_CLOCK x 2 */
 };
 
 /* ------------------------------------------------------------------------- */
@@ -687,6 +706,13 @@ struct LCM_PARAMS {
 	unsigned int corner_pattern_height;
 	unsigned int corner_pattern_height_bot;
 	struct LCM_ROUND_CORNER round_corner_params;
+	unsigned int corner_pattern_tp_size;
+	void *corner_pattern_lt_addr;
+
+	int lcm_color_mode;
+	unsigned int min_luminance;
+	unsigned int average_luminance;
+	unsigned int max_luminance;
 };
 
 
@@ -781,6 +807,7 @@ struct LCM_DTS {
 
 #define REGFLAG_ESCAPE_ID		(0x00)
 #define REGFLAG_DELAY_MS_V3		(0xFF)
+#define REGFLAG_HSCLK_EN_V3		(0xFE)
 
 struct LCM_setting_table_V3 {
 	unsigned char id;
@@ -913,6 +940,7 @@ struct LCM_DRIVER {
 	void (*set_pwm_for_mix)(int enable);
 
 	void (*aod)(int enter);
+	struct KDISP_LCM_DRIVER		kdisp_lcm_drv;
 };
 
 /* LCM Driver Functions */
