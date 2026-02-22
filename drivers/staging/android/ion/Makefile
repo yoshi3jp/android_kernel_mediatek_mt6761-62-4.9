@@ -12,6 +12,7 @@ obj-$(CONFIG_ION_HISI) += hisilicon/
 obj-$(CONFIG_ION_OF) += ion_of.o
 
 obj-$(CONFIG_MTK_ION) += mtk/
+ccflags-y += -I$(srctree)/drivers/staging/android/ion/
 ccflags-$(CONFIG_MTK_ION)  += -I$(srctree)/drivers/staging/android/ion/mtk
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/mmp/
 
