@@ -26,6 +26,12 @@ enum mt65xx_led_type {
 	MT65XX_LED_TYPE_KEYBOARD,
 	MT65XX_LED_TYPE_BUTTON,
 	MT65XX_LED_TYPE_LCD,
+
+	/* Kyocera additions (must be distinct values) */
+	MT65XX_LED_TYPE_KEY_GREEN,
+	MT65XX_LED_TYPE_KEY_WHITE,
+	MT65XX_LED_TYPE_KEY_BLUE,
+
 	MT65XX_LED_TYPE_TOTAL,
 };
 
