@@ -42,7 +42,7 @@
 #include <linux/miscdevice.h>
 #include <linux/reboot.h>
 
-#include <kc_leds_drv.h>
+#include <linux/kc_leds_drv.h>
 
 #define LCM_LOGI(fmt, args...)  pr_notice("[KERNEL/"LOG_TAG"]"fmt, ##args)
 #define LCM_LOGD(fmt, args...)  pr_debug("[KERNEL/"LOG_TAG"]"fmt, ##args)
