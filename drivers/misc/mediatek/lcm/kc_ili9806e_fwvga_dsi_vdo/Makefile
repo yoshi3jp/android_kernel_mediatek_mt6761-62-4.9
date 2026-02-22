@@ -10,3 +10,4 @@ obj-y += kc_ili9806e_fwvga_dsi_vdo.o
 
 ccflags-$(CONFIG_MTK_LCM) += -I$(srctree)/drivers/misc/mediatek/lcm/inc
 ccflags-$(CONFIG_MTK_LCM) += -I$(srctree)/drivers/misc/mediatek/leds
+ccflags-$(CONFIG_MTK_LCM) += -I$(srctree)/drivers/misc/mediatek/leds/mt6765
