@@ -22,7 +22,7 @@
 #include "m4u_port.h"
 #endif
 
-typedef struct m4u_client_t m4u_client_t;   /* forward declaration for legacy M4U */
+//typedef struct m4u_client_t m4u_client_t;   /* forward declaration for legacy M4U */
 
 #include "ddp_hal.h"
 #include "mtk_ion.h"
