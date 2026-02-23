@@ -58,6 +58,7 @@
 
 #define D0_SEL 0	/* not implement */
 #define AGING_SEL 0	/* not implement */
+#define DLPT_UI_REMAP_EN 0
 
 /* ADC resistor  */
 #define R_BAT_SENSE	4
@@ -99,8 +100,8 @@
 #define CALI_CAR_TUNE_AVG_NUM	60
 
 /* Aging Compensation 1*/
-#define AGING_FACTOR_MIN 10
-#define AGING_FACTOR_DIFF 90
+#define AGING_FACTOR_MIN 75
+#define AGING_FACTOR_DIFF 10
 #define DIFFERENCE_VOLTAGE_UPDATE 50
 #define AGING_ONE_EN 1
 #define AGING1_UPDATE_SOC 30
@@ -126,7 +127,7 @@
 #define SWOCV_OLDOCV_DIFF_EMB		1000	/* 100mV */
 
 #define VIR_OLDOCV_DIFF_EMB		10000	/* 1000mV */
-#define VIR_OLDOCV_DIFF_EMB_LT	10000	/* 1000mV */
+#define VIR_OLDOCV_DIFF_EMB_LT	1500	/* 150mV */
 #define VIR_OLDOCV_DIFF_EMB_TMP	5
 
 #define TNEW_TOLD_PON_DIFF	5
@@ -184,7 +185,7 @@
 
 #define BATTERY_TMP_TO_DISABLE_GM30 -50
 #define BATTERY_TMP_TO_DISABLE_NAFG -35
-#define DEFAULT_BATTERY_TMP_WHEN_DISABLE_NAFG 25
+#define DEFAULT_BATTERY_TMP_WHEN_DISABLE_NAFG -30
 #define BATTERY_TMP_TO_ENABLE_NAFG -20
 /* #define GM30_DISABLE_NAFG */
 
