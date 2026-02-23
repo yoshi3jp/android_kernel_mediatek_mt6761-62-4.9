@@ -30,6 +30,9 @@ endif
 # for ep0 test
 ccflags-y += -I$(srctree)/drivers/usb/core/
 
+# for mt_usb_vbus on/off not being used in this tree
+CFLAGS_usb20_host.o += -Wno-unused-function
+
 obj-$(CONFIG_USB_MTK_HDRC)	:= usb20.o usb20_phy.o
 obj-$(CONFIG_USB_MTK_HDRC)  += usb20_host.o
 obj-$(CONFIG_USBIF_COMPLIANCE)   += usb20_otg_if.o
