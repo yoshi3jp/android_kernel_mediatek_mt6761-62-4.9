@@ -20,6 +20,7 @@
 #elif defined(CONFIG_MTK_M4U)
 #include "m4u.h"
 #include "m4u_port.h"
+#include "mach/pseudo_m4u.h"
 #endif
 #include "ddp_hal.h"
 #include "mtk_ion.h"
