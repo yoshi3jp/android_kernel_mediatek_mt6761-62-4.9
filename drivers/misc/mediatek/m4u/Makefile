@@ -11,6 +11,9 @@
 # GNU General Public License for more details.
 #
 
+subdir-ccflags-y += -I$(src)/
+subdir-ccflags-y += -I$(src)/$(MTK_PLATFORM)
+
 obj-y += $(subst ",,$(CONFIG_MTK_PLATFORM))/
 
 obj-$(CONFIG_ARCH_MT6570) += 2.0/
