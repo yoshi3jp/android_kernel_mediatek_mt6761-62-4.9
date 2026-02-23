@@ -13,6 +13,7 @@
 
 subdir-ccflags-y += -I$(src)/
 subdir-ccflags-y += -I$(src)/$(MTK_PLATFORM)
+subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include/mt-plat/$(MTK_PLATFORM)/include/trustzone/m4u/
 
 obj-y += $(subst ",,$(CONFIG_MTK_PLATFORM))/
 
